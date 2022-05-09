@@ -786,32 +786,3 @@ function twentytwenty_get_elements_array() {
 	 */
 	return apply_filters( 'twentytwenty_get_elements_array', $elements );
 }
-
-
-
-
-
-// ====================================================
-
-add_action( 'wp_enqueue_scripts', 'myajax_data', 99 );
-function myajax_data(){
-
-	wp_enqueue_script('form', get_template_directory_uri() . './form.js', '', '', true);
-
-
-	wp_localize_script( 'form', 'ajaxurl',
-		array(
-			'ajaxurl' => admin_url('admin-ajax.php'),
-		)
-	);
-
-}
-
-add_action('wp_ajax_form_action', 'form_action_callback');
-add_action('wp_ajax_nopriv_form_action', 'form_action_callback');
-
-function form_action_callback() {
-	$text = $_POST['text'];
-	echo $text;
-	wp_die();
-}

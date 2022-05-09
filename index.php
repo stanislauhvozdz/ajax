@@ -19,13 +19,6 @@ get_header();
 
 <main id="site-content">
 
-	<form id="form" style="margin-bottom: 700px; display: flex" action="form_action" enctype="multipart/form-data">
-		<input type="text" name="text">
-		<button type="submit">Send..</button>
-	</form>
-
-	<?php require_once 'send.php' ?>
-
 	<?php
 
 	$archive_title    = '';
