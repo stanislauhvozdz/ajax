@@ -19,6 +19,13 @@ get_header();
 
 <main id="site-content">
 
+		<form action="" id="search_form" style="margin-bottom: 600px; display: flex;">
+			<input type="search" name="search_form" placeholder="Enter post title">
+			<input type="hidden" name="action" value="sform_action">
+			<?php wp_nonce_field(); ?>
+			<button type="submit">Search Search</button>
+		</form>
+
 	<?php
 
 	$archive_title    = '';

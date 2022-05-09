@@ -786,3 +786,33 @@ function twentytwenty_get_elements_array() {
 	 */
 	return apply_filters( 'twentytwenty_get_elements_array', $elements );
 }
+
+
+// =========================
+
+
+function form_script() {
+	wp_enqueue_script( 'search-form', get_template_directory_uri() . './search-form.js', array( 'jquery' ), false, true );
+
+	wp_localize_script( 'search-form', 'ajaxurl', array(
+		'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		'sform_nonce' => wp_create_nonce(),
+	) );
+}
+
+add_action( 'wp_enqueue_scripts', 'form_script' );
+
+add_action( 'wp_ajax_sform_action', 'search_form' );
+add_action( 'wp_ajax_nopriv_sform_action', 'search_form' );
+
+function search_form() {
+
+	check_ajax_referer();
+
+	// if (!wp_verify_nonce( $_POST['_wpnonce']) ) {
+	// 	wp_die();
+	// }
+
+	print_r($_POST);
+	wp_die();
+}
